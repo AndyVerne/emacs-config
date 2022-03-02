@@ -2,7 +2,7 @@
 <a href="https://www.patreon.com/sanityinc"><img alt="Support me" src="https://img.shields.io/badge/Support%20Me-%F0%9F%92%97-ff69b4.svg"></a>
 
 # A reasonable Emacs config
-
+fork from [Purcell](https://github.com/purcell/emacs.d)
 This is my emacs configuration tree, continually used and tweaked
 since 2000, and it may be a good starting point for other Emacs
 users, especially web developers. These days it's
