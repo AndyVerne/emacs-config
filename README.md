@@ -3,11 +3,7 @@
 
 # A reasonable Emacs config
 fork from [Purcell](https://github.com/purcell/emacs.d)
-This is my emacs configuration tree, continually used and tweaked
-since 2000, and it may be a good starting point for other Emacs
-users, especially web developers. These days it's
-somewhat geared towards OS X, but it is known to also work on Linux
-and Windows.
+
 
 Emacs itself comes with support for many programming languages. This
 config adds improved defaults and extended support for the following, listed
