@@ -21,6 +21,7 @@
 (defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
 (defconst *is-a-mac* (eq system-type 'darwin))
 
+
 
 ;; Adjust garbage collection thresholds during startup, and thereafter
 
@@ -33,13 +34,22 @@
 
 ;; Bootstrap config
 
-
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (require 'init-utils)
 (require 'init-site-lisp) ;; Must come before elpa, as it may provide package.el
-;; Calls (package-initialize)
+;;(package-initialize)
+;;(when (memq window-system '(mac ns x))
+ ;;(exec-path-from-shell-initialize))
+;;(when (daemonp)
+ ;;(exec-path-from-shell-initialize))
 (require 'init-elpa)      ;; Machinery for installing required packages
 (require 'init-exec-path) ;; Set up $PATH
+
+;; added by andy
+;;(use-package vterm :ensure t)
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 
 
 ;; Allow users to provide an optional "init-preload-local.el"
@@ -49,6 +59,9 @@
 (require-package 'diminish)
 (maybe-require-package 'scratch)
 (require-package 'command-log-mode)
+
+(require 'clipetty)
+(global-clipetty-mode)
 
 (require 'init-frame-hooks)
 (require 'init-xterm)
@@ -150,6 +163,7 @@
 
 (require 'init-direnv)
 
+
 
 
 ;; Allow access from emacsclient
@@ -158,6 +172,13 @@
             (require 'server)
             (unless (server-running-p)
               (server-start))))
+
+;; set the ssh tunnels in emacs by andy
+(setq ssh-tunnels-configurations
+      '((:name "tunnel1"
+               :local-port 8888
+               :remote-port 8888
+               :login "lab")))
 
 ;; Variables configured via the interactive 'customize' interface
 (when (file-exists-p custom-file)
